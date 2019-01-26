@@ -16,7 +16,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>music.io</h1>
+          <h1>MapTunes.io</h1>
+          <p> Visualize data from over 180 million jukebox song plays using parameters of your choice!  </p>
           <hr
             style={{
               color: "white",
