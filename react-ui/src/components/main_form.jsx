@@ -75,6 +75,7 @@ class MainForm extends Component {
             <TimePicker
               onChange={this.updateStartTime}
               value={this.state.startTime}
+              disableClock={true}
             />
           </div>
         </div>
@@ -85,6 +86,7 @@ class MainForm extends Component {
             <TimePicker
               onChange={this.updateEndTime}
               value={this.state.endTime}
+              disableClock={true}
             />
           </div>
         </div>
