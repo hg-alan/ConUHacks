@@ -4,6 +4,7 @@ import TimePicker from "rc-time-picker";
 import ReactDOM from "react-dom";
 
 import MainForm from "./components/main_form";
+import Map from "./components/map";
 
 import moment from "moment";
 
@@ -17,15 +18,21 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1>MapTunes.io</h1>
-          <p> Visualize data from over 180 million jukebox song plays using parameters of your choice!  </p>
+          <p>
+            {" "}
+            Visualize data from over 180 million jukebox song plays using
+            parameters of your choice!{" "}
+          </p>
           <hr
             style={{
-              color: "white",
-              backgroundColor: "white",
+              color: "black",
+              backgroundColor: "black",
               height: 2,
               width: "30%"
             }}
           />
+
+          <Map />
 
           <MainForm />
         </header>
