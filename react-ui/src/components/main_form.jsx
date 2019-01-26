@@ -35,13 +35,18 @@ class MainForm extends Component {
   }
 
   handleSubmit(event) {
-    alert(
-      `Start time: ${this.state.startTime}\nEnd time: ${
-        this.state.endTime
-      }\nArtist: ${this.state.artist}\nGenre: ${this.state.genre}\nSong: ${
-        this.state.song
-      }`
-    );
+    if (this.state.startTime > this.state.endTime) {
+      alert("Start time must come before end time!");
+    } else {
+      alert(
+        `Start time: ${this.state.startTime}\nEnd time: ${
+          this.state.endTime
+        }\nArtist: ${this.state.artist}\nGenre: ${this.state.genre}\nSong: ${
+          this.state.song
+        }`
+      );
+    }
+
     event.preventDefault();
   }
 
