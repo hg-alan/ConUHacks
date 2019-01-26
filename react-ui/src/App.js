@@ -1,7 +1,23 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import DatePicker from "react-datepicker";
+import TimePicker from "rc-time-picker";
+import ReactDOM from "react-dom";
+
+import moment from "moment";
+
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
+import "rc-time-picker/assets/index.css";
+
+const format = "h:mm A";
+
+const now = moment()
+  .hour(0)
+  .minute(0);
+
+function onChange(value) {
+  console.log(value && value.format(format));
+}
 
 class App extends Component {
   render() {
@@ -17,61 +33,72 @@ class App extends Component {
               width: "30%"
             }}
           />
+
           <form>
             <div class="form-group">
-              <small>Start Date</small>
-              <input
-                type="text"
-                class="form-control"
-                id="start-date"
-                placeholder="Enter start date"
-              />
+              <small>Start Time</small>
+              <div>
+                {" "}
+                <TimePicker
+                  id="start-date"
+                  showSecond={false}
+                  defaultValue={now}
+                  className="xxx"
+                  onChange={onChange}
+                  format={format}
+                  use12Hours
+                  inputReadOnly
+                />
+              </div>
             </div>
             <div class="form-group">
-              <small>End Date</small>
-              <input
-                type="text"
-                class="form-control"
-                id="start-date"
-                placeholder="Enter end date"
-              />
+              <small>End Time</small>
+              <div>
+                {" "}
+                <TimePicker
+                  id="start-date"
+                  showSecond={false}
+                  defaultValue={now}
+                  className="xxx"
+                  onChange={onChange}
+                  format={format}
+                  use12Hours
+                  inputReadOnly
+                />
+              </div>
             </div>
-
-            <div class="form-group">
-              <small>Artist ID</small>
-              <input
-                type="text"
-                class="form-control"
-                id="start-date"
-                placeholder="Enter artist date"
-              />
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox1"
+                  value="option1"
+                />
+                {" Artist "}
+              </label>
             </div>
-            <div class="form-group">
-              <small>Song ID</small>
-              <input
-                type="text"
-                class="form-control"
-                id="artist-id"
-                placeholder="Enter song ID"
-              />
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox2"
+                  value="option2"
+                />
+                {" Genre "}
+              </label>
             </div>
-            <div class="form-group">
-              <small>Offset</small>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Enter offset"
-              />
-            </div>
-            <div class="form-group">
-              <small>Pagination Limit</small>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputPassword1"
-                placeholder="Enter limit"
-              />
+            <div class="form-check form-check-inline">
+              <label class="form-check-label">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox3"
+                  value="option3"
+                />
+                {" Song "}
+              </label>
             </div>
 
             <button type="submit" class="btn btn-primary">
