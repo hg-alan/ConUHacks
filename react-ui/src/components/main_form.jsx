@@ -1,26 +1,6 @@
 import React, { Component } from "react";
 
-import DatePicker from "react-datepicker";
 import TimePicker from "react-time-picker";
-import ReactDOM from "react-dom";
-
-import moment from "moment";
-
-const format = "h:mm A";
-
-const now = moment()
-  .hour(0)
-  .minute(0);
-
-function onChange(value) {
-  console.log(value && value.format(format));
-}
-
-function handleSubmit(event) {
-  let startDate = "2018-02-19T21:00:00Z";
-  let endDate = "2018-02-19T22:00:00Z";
-  //event.preventDefault();
-}
 
 class MainForm extends Component {
   constructor(props) {

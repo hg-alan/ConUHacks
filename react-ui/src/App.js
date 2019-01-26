@@ -20,8 +20,8 @@ class App extends Component {
           <h1>MapTunes.io</h1>
           <p>
             {" "}
-            Visualize data from over 180 million jukebox song plays using
-            parameters of your choice!{" "}
+            Visualize data from February 19, 2018 using parameters of your
+            choice!{" "}
           </p>
           <hr
             style={{
