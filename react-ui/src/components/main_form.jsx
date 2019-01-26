@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import DatePicker from "react-datepicker";
-import TimePicker from "rc-time-picker";
+import TimePicker from "react-time-picker";
 import ReactDOM from "react-dom";
 
 import moment from "moment";
@@ -17,8 +17,8 @@ function onChange(value) {
 }
 
 function handleSubmit(event) {
-  let startDate = "2019-01-01T00:00:00.000Z";
-  let endDate = "2019-01-02T00:00:00.000Z";
+  let startDate = "2018-02-19T21:00:00Z";
+  let endDate = "2018-02-19T22:00:00Z";
   //event.preventDefault();
 }
 
@@ -26,40 +26,55 @@ class MainForm extends Component {
   constructor(props) {
     super(props);
 
+    this.updateStartTime = this.updateStartTime.bind(this);
+    this.updateEndTime = this.updateEndTime.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
-      startTime: -1,
-      endTime: -1,
+      startTime: "12:00",
+      endTime: "13:00",
       artist: false,
       genre: false,
       song: false
     };
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  updateStartTime = startTime => this.setState({ startTime });
+
+  updateEndTime = endTime => this.setState({ endTime });
+
+  handleCheckboxChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
   }
 
   handleSubmit(event) {
-    alert("A name was submitted: " + this.state.value);
+    alert(
+      `Start time: ${this.state.startTime}\nEnd time: ${
+        this.state.endTime
+      }\nArtist: ${this.state.artist}\nGenre: ${this.state.genre}\nSong: ${
+        this.state.song
+      }`
+    );
     event.preventDefault();
   }
 
   render() {
     return (
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={this.handleSubmit}>
         <div class="form-group">
           <small>Start Time</small>
           <div>
             {" "}
             <TimePicker
-              id="start-date"
-              showSecond={false}
-              defaultValue={now}
-              className="xxx"
-              onChange={onChange}
-              format={format}
-              use12Hours
-              inputReadOnly
+              onChange={this.updateStartTime}
+              value={this.state.startTime}
             />
           </div>
         </div>
@@ -68,14 +83,8 @@ class MainForm extends Component {
           <div>
             {" "}
             <TimePicker
-              id="start-date"
-              showSecond={false}
-              defaultValue={now}
-              className="xxx"
-              onChange={onChange}
-              format={format}
-              use12Hours
-              inputReadOnly
+              onChange={this.updateEndTime}
+              value={this.state.endTime}
             />
           </div>
         </div>
@@ -88,6 +97,7 @@ class MainForm extends Component {
                 id="inlineCheckbox1"
                 value="true"
                 name="artist"
+                onChange={this.handleCheckboxChange}
               />
               {" Artist "}
             </label>
@@ -100,6 +110,7 @@ class MainForm extends Component {
                 id="inlineCheckbox2"
                 value="true"
                 name="genre"
+                onChange={this.handleCheckboxChange}
               />
               {" Genre "}
             </label>
@@ -112,6 +123,7 @@ class MainForm extends Component {
                 id="inlineCheckbox3"
                 value="true"
                 name="song"
+                onChange={this.handleCheckboxChange}
               />
               {" Song "}
             </label>
